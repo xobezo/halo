@@ -96,7 +96,7 @@ class halo():
         # Previous matches
         match_overview = "https://www.haloapi.com/stats/hw2/players/{}/matches".format(seed)
         #Pulls last 20 matches from player
-        overview = requests.get(match_overview,headers= header)
+        overview = requests.get(match_overview,headers= self.header)
         
         # Decodes website output into dict
         temp = json.JSONDecoder().decode(overview.text)
@@ -148,7 +148,7 @@ class halo():
                 # End the loop
                 return usernames
             match_details = "https://www.haloapi.com/stats/hw2/matches/{}".format(matchId)
-            specific = requests.get(match_details,headers= header)
+            specific = requests.get(match_details,headers= self.header)
             r = json.JSONDecoder().decode(specific.text)
 
             # This will put all the players in a list
@@ -189,7 +189,7 @@ class halo():
         """
         match_overview = "https://www.haloapi.com/stats/hw2/players/{}/matches".format(player)
         #Pulls last 20 matches from player
-        overview = requests.get(match_overview,headers= header)
+        overview = requests.get(match_overview,headers= self.header)
         time.sleep(1)
         # Decodes website output into dict
         temp = json.JSONDecoder().decode(overview.text)
